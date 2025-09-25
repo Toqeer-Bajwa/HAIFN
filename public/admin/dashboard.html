@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Haifn Lighting</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <div class="admin-container">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2 class="logo">Haifn Admin</h2>
+      <ul class="menu">
+        <li><a href="#" class="active" data-section="dashboard">📊 Dashboard</a></li>
+        <li><a href="#" data-section="products">💡 Products</a></li>
+        <li><a href="#" data-section="slider">🖼 Slider</a></li>
+        <li><a href="#" data-section="password">🔑 Change Password</a></li>
+        <li><a href="#" data-section="logout">🚪 Logout</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <header class="content-header">
+        <h1 id="section-title">Dashboard</h1>
+      </header>
+
+      <!-- Default Dashboard Section -->
+      <section id="dashboard-section" class="admin-section">
+        <p>Welcome to the <strong>Haifn Lighting Admin Dashboard</strong>.  
+        Use the sidebar to manage products, homepage slider, or change your password.</p>
+      </section>
+
+      <!-- Products Management -->
+      <section id="products-section" class="admin-section" style="display:none;">
+        <h2>💡 Manage Products</h2>
+
+        <!-- Product Upload -->
+        <form id="productForm" enctype="multipart/form-data">
+          <label>Category:</label>
+          <select id="category" name="category" required>
+            <option value="">-- Select Category --</option>
+            <option value="LED Bulb">LED Bulb</option>
+            <option value="SMD Downlight">SMD Downlight</option>
+            <option value="Moon Light">Moon Light</option>
+            <option value="COB Light">COB Light</option>
+            <option value="Batten Lights">Batten Lights</option>
+            <option value="Flood Lights">Flood Lights</option>
+            <option value="Panel Lights">Panel Lights</option>
+            <option value="Rope Light">Rope Light</option>
+          </select>
+
+          <label>Option (Watts / Color):</label>
+          <select id="option" name="option" required>
+            <option value="">-- Select Option --</option>
+          </select>
+
+          <label>Product Name:</label>
+          <input type="text" name="name" placeholder="Enter product name" required>
+
+          <label>Description:</label>
+          <textarea name="description" placeholder="Enter short description" required></textarea>
+
+          <label>Upload Image:</label>
+          <input type="file" name="image" accept="image/*" required>
+
+          <button type="submit" class="btn">Add Product</button>
+        </form>
+
+        <hr>
+        <!-- Product List -->
+        <h3>📂 Existing Products</h3>
+        <div id="productList" class="product-list"></div>
+      </section>
+
+      <!-- Slider Management -->
+      <section id="slider-section" class="admin-section" style="display:none;">
+        <h2>🖼 Manage Slider</h2>
+        
+        <!-- Upload Form -->
+        <form id="sliderForm" enctype="multipart/form-data">
+          <label>Title (optional):</label>
+          <input type="text" name="title" placeholder="Enter slider title">
+
+          <label>Link (optional):</label>
+          <input type="text" name="link" placeholder="http://example.com/product">
+
+          <label>Upload Image:</label>
+          <input type="file" name="image" accept="image/*" required>
+
+          <button type="submit" class="btn">Upload Slide</button>
+        </form>
+
+        <hr>
+        <!-- Existing Slides -->
+        <h3>📂 Existing Slides</h3>
+        <div id="sliderList" class="slider-list"></div>
+      </section>
+
+      <!-- Change Password -->
+      <section id="password-section" class="admin-section" style="display:none;">
+        <h2>🔑 Change Password</h2>
+        <form id="passwordForm">
+          <label>Current Password:</label>
+          <input type="password" name="currentPassword" required>
+
+          <label>New Password:</label>
+          <input type="password" name="newPassword" required>
+
+          <label>Confirm New Password:</label>
+          <input type="password" name="confirmPassword" required>
+
+          <button type="submit" class="btn">Update Password</button>
+        </form>
+      </section>
+
+      <!-- Logout Section -->
+      <section id="logout-section" class="admin-section" style="display:none;">
+        <h2>🚪 Logout</h2>
+        <p>Are you sure you want to logout?</p>
+        <button id="confirmLogout" class="btn">Yes, Logout</button>
+      </section>
+    </main>
+  </div>
+
+  <!-- Auth Check -->
+  <script>
+    const token = localStorage.getItem("token");
+    if (!token) {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <!-- Admin JS -->
+  <script src="js/admin.js"></script>
+</body>
+</html>

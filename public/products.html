@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products - Haifn Lighting</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Haifn Lighting</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="products.html" class="active">Products</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Products Section -->
+  <section class="products-page">
+    <div class="container">
+      <h1>Our Products</h1>
+
+      <!-- Category Filter -->
+      <div class="filter-bar">
+        <label for="categoryFilter">Filter by Category:</label>
+        <select id="categoryFilter">
+          <option value="all">All</option>
+          <option value="LED Bulb">LED Bulb</option>
+          <option value="SMD Downlight">SMD Downlight</option>
+          <option value="Moon Light">Moon Light</option>
+          <option value="COB Light">COB Light</option>
+          <option value="Batten Lights">Batten Lights</option>
+          <option value="Flood Lights">Flood Lights</option>
+          <option value="Panel Lights">Panel Lights</option>
+          <option value="Rope Light">Rope Light</option>
+        </select>
+      </div>
+
+      <!-- Products Grid -->
+      <div id="productList" class="product-grid"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-container">
+      <p>&copy; 2025 Haifn Lighting. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/products.js"></script>
+</body>
+</html>
