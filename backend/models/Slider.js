@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 
-const SliderSchema = new mongoose.Schema({
-  image: { type: String, required: true },
+const slideSchema = new mongoose.Schema({
   title: { type: String },
-  link: { type: String }, // can link to product or external page
-}, { timestamps: true });
+  link: { type: String },
+  image: { type: String, required: true }, // uploaded file path
+  createdAt: { type: Date, default: Date.now },
+});
 
-module.exports = mongoose.model("Slider", SliderSchema);
-// --------------------
+module.exports = mongoose.model("Slide", slideSchema);
+// backend/models/Slider.js

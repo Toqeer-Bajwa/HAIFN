@@ -23,7 +23,7 @@ const productsRoute = require("./routes/products"); // public
 const authRoute = require("./routes/auth");
 const contactRoute = require("./routes/contact"); // public
 const adminRoute = require("./routes/admin");       // admin-only
-const sliderRoute = require("./routes/slider");
+const sliderRoute = require("./routes/slider");   //admin-only
 
 // Serve frontend static files
 app.use(express.static(path.join(__dirname, '..', 'public')));
@@ -33,6 +33,7 @@ app.use('/api/categories', categoriesRoute);
 app.use('/api/products', productsRoute);
 app.use('/api/auth', authRoute);
 app.use('/api/contact', contactRoute);
+app.use('/api/slider', sliderRoute); // Public slider viewing
 
 // Serve uploaded images statically
 
@@ -43,8 +44,6 @@ app.use('/api/admin', adminRoute);
 app.use('/api/admin/slider', sliderRoute); // Admin slider management
 // Static Files
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 
 
 // ⚡ Global error handler (ONE TIME ONLY)

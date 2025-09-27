@@ -10,10 +10,29 @@ const fs = require("fs");
 
 //Multer config for image upload
 const storage = multer.diskStorage({
-   destination: (req, file, cb) => cb(null, "public/uploads/"),
-  filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname)),
+  destination: (req, file, cb) => {
+    cb(null, path.join(__dirname,"..","public", "uploads")); // ✅ always consistent
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
 });
-const upload = multer({ storage });
+
+// ✅ Only allow image files
+const fileFilter = (req, file, cb) => {
+  const allowed = /jpg|jpeg|png|gif/;
+  const ext = path.extname(file.originalname).toLowerCase();
+  if (allowed.test(ext)) {
+    cb(null, true);
+  } else {
+    cb(new Error("Only image files are allowed (jpg, jpeg, png, gif)"));
+  }
+};
+
+const upload = multer({
+  storage,
+  fileFilter,
+});
 // ✅ Create Product
 router.post("/products", verifyToken, checkAdmin, upload.single("image"), async (req, res) => {
   try {

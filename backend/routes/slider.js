@@ -21,8 +21,21 @@ const storage = multer.diskStorage({
   filename: (req, file, cb) => {
     cb(null, Date.now() + path.extname(file.originalname));
   },
-});
-const upload = multer({ storage });
+  });
+  const fileFilter = (req, file, cb) => {
+    const allowed = /jpg|jpeg|png|gif/;
+    const ext = path.extname(file.originalname).toLowerCase();
+    if (allowed.test(ext)) {
+      cb(null, true);
+    } else {
+      cb(new Error("Only image files are allowed (jpg, jpeg, png, gif)"));
+    }
+  };
+
+  const upload = multer({
+    storage,
+    fileFilter,
+  });
 
 // --------------------
 // @route   POST /api/admin/slider
